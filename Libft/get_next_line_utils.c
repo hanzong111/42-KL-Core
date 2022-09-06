@@ -6,7 +6,7 @@
 /*   By: ojing-ha <ojing-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 16:39:11 by ojing-ha          #+#    #+#             */
-/*   Updated: 2022/08/13 22:21:36 by ojing-ha         ###   ########.fr       */
+/*   Updated: 2022/09/06 15:22:41 by ojing-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*	To Count string length of str1 & str2 to get the malloc length	*/
 /*	word count of str1 is stored in info->wc1						*/
 /*	Word count of str2 is stored in info->wc2						*/
-void	gnl_strlen(char *str1, char *str2, t_info *info)
+void	gnl_strlen(char *str1, char *str2, t_gnl *info)
 {
 	int	readwc;
 
@@ -83,7 +83,7 @@ char	*gnl_strdup(char *newstr, int type)
 }
 
 /*	To join str1 & str2 together , to form a finalstr	*/
-void	gnl_strjoin(char *buffer, t_info *info)
+void	gnl_strjoin(char *buffer, t_gnl *info)
 {
 	char	*firststr;
 	char	*newstr;
@@ -110,7 +110,7 @@ void	gnl_strjoin(char *buffer, t_info *info)
 
 /*	To read a line in a file , and generate a copy of that line	*/
 /*	Storing the final produced string inside of info->finalstr	*/
-char	*gnl_finalstr(int fd, char *buffer, t_info *info)
+char	*gnl_finalstr(int fd, char *buffer, t_gnl *info)
 {
 	info->readwc = read(fd, buffer, BUFFER_SIZE);
 	while (info->readwc > 0)

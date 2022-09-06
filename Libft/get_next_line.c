@@ -6,7 +6,7 @@
 /*   By: ojing-ha <ojing-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:53:05 by ojing-ha          #+#    #+#             */
-/*   Updated: 2022/08/22 13:43:29 by ojing-ha         ###   ########.fr       */
+/*   Updated: 2022/09/06 15:22:40 by ojing-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	gnl_checks(char *buffer)
 }
 
 /*	To save remainder string behind the '\n' in the buffer */
-char	*gnl_strsort(char *buffer, t_info *info)
+char	*gnl_strsort(char *buffer, t_gnl *info)
 {
 	char	*nextstr;
 	int		readwc;
@@ -60,7 +60,7 @@ char	*gnl_strsort(char *buffer, t_info *info)
 
 /*	To Extract "finalstring" from "arry[fd]" 		 */
 /*	Then store the remainder string in info->nextstr */
-void	gnl_extract(char *buffer, t_info *info)
+void	gnl_extract(char *buffer, t_gnl *info)
 {
 	info->index = 0;
 	info->wc = 0;
@@ -93,7 +93,7 @@ void	gnl_extract(char *buffer, t_info *info)
 /*	IF '\n' IS NOT PRESENT INSIDE OF ARRY[FD]					*/
 /*	Make a duplicate of arry[fd] and store it in				*/
 /*	info->finalstr as this is also the start of a new string	*/
-void	gnl_extract_and_join(int fd, char **arry, t_info *info, char *buffer)
+void	gnl_extract_and_join(int fd, char **arry, t_gnl *info, char *buffer)
 {
 	if (gnl_checks(arry[fd]))
 	{
@@ -116,7 +116,7 @@ char	*get_next_line(int fd)
 {
 	static char	*arry[1024];
 	char		*buffer;
-	t_info		info;
+	t_gnl		info;
 
 	if (fd < 0 || fd > 1024 || BUFFER_SIZE <= 0)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: ojing-ha <ojing-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:44:20 by ojing-ha          #+#    #+#             */
-/*   Updated: 2022/09/06 15:13:20 by ojing-ha         ###   ########.fr       */
+/*   Updated: 2022/09/06 15:22:39 by ojing-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <unistd.h>
 # include <stdio.h>
 
-typedef struct s_info
+typedef struct s_gnl
 {
 	char	*finalstr;
 	char	*bufferstr;
@@ -31,14 +31,14 @@ typedef struct s_info
 	int		wc1;
 	int		wc2;
 	int		readwc;
-}	t_info;
+}	t_gnl;
 
 char	*get_next_line(int fd);
-void	gnl_strlen(char *str1, char *str2, t_info *info);
-void	gnl_strjoin(char *buffer, t_info *info);
+void	gnl_strlen(char *str1, char *str2, t_gnl *info);
+void	gnl_strjoin(char *buffer, t_gnl *info);
 void	gnl_strcopy(char *str, char *bufferstr, int len, int type);
 char	*gnl_strdup(char *newstr, int type);
-char	*gnl_finalstr(int fd, char *buffer, t_info *info);
+char	*gnl_finalstr(int fd, char *buffer, t_gnl *info);
 int		gnl_checks(char *buffer);
 
 #endif
