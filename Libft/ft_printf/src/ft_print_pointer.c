@@ -6,15 +6,15 @@
 /*   By: ojing-ha <ojing-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 15:51:45 by ojing-ha          #+#    #+#             */
-/*   Updated: 2022/07/24 16:11:16 by ojing-ha         ###   ########.fr       */
+/*   Updated: 2022/09/08 17:18:11 by ojing-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_po_only_width(t_info *info);
+void	ft_po_only_width(t_pf *info);
 
-void	ft_print_pointer(t_flags *f, t_info *info, unsigned long long args)
+void	ft_print_pointer(t_flags *f, t_pf *info, unsigned long long args)
 {
 	ft_convert_ptr(info, args);
 	info->wc = info->wc + 2;
@@ -31,7 +31,7 @@ void	ft_print_pointer(t_flags *f, t_info *info, unsigned long long args)
 	free(info->format);
 }
 
-void	ft_po_only_width(t_info *info)
+void	ft_po_only_width(t_pf *info)
 {
 	if (info->wc >= info->width)
 	{

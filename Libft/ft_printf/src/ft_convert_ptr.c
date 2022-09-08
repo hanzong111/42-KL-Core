@@ -6,15 +6,15 @@
 /*   By: ojing-ha <ojing-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 18:51:26 by ojing-ha          #+#    #+#             */
-/*   Updated: 2022/07/24 16:34:33 by ojing-ha         ###   ########.fr       */
+/*   Updated: 2022/09/08 17:18:11 by ojing-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_ptr_nbr_len(t_info *info, unsigned long long i);
+void	ft_ptr_nbr_len(t_pf *info, unsigned long long i);
 
-void	ft_convert_ptr(t_info *info, unsigned long long i)
+void	ft_convert_ptr(t_pf *info, unsigned long long i)
 {
 	char	*str;
 	int		index;
@@ -36,7 +36,7 @@ void	ft_convert_ptr(t_info *info, unsigned long long i)
 	info->format = str;
 }
 
-void	ft_ptr_nbr_len(t_info *info, unsigned long long i)
+void	ft_ptr_nbr_len(t_pf *info, unsigned long long i)
 {
 	while (i >= 16)
 	{

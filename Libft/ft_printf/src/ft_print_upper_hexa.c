@@ -6,7 +6,7 @@
 /*   By: ojing-ha <ojing-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 16:00:02 by ojing-ha          #+#    #+#             */
-/*   Updated: 2022/07/24 16:13:25 by ojing-ha         ###   ########.fr       */
+/*   Updated: 2022/09/08 17:18:11 by ojing-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_str_upper(char *str);
 
-void	ft_print_upper_hexa(t_flags *f, t_info *info, unsigned int args)
+void	ft_print_upper_hexa(t_flags *f, t_pf *info, unsigned int args)
 {
 	ft_convert_hex(f, info, (unsigned int)args);
 	ft_str_upper(info->format);

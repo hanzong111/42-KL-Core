@@ -6,17 +6,17 @@
 /*   By: ojing-ha <ojing-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 19:25:06 by ojing-ha          #+#    #+#             */
-/*   Updated: 2022/07/24 16:46:42 by ojing-ha         ###   ########.fr       */
+/*   Updated: 2022/09/08 17:18:11 by ojing-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_precision_bigger(t_flags *f, t_info *info);
-void	ft_precision_bigger2(t_flags *f, t_info *info);
-void	ft_precision_smaller(t_flags *f, t_info *info);
+void	ft_precision_bigger(t_flags *f, t_pf *info);
+void	ft_precision_bigger2(t_flags *f, t_pf *info);
+void	ft_precision_smaller(t_flags *f, t_pf *info);
 
-void	ft_minus_dot(t_flags *f, t_info *info, char	*type)
+void	ft_minus_dot(t_flags *f, t_pf *info, char	*type)
 {
 	if (f->hash || f->plus || f->space)
 		ft_putstr_fd(type, 1);
@@ -26,7 +26,7 @@ void	ft_minus_dot(t_flags *f, t_info *info, char	*type)
 		ft_precision_smaller(f, info);
 }
 
-void	ft_precision_bigger(t_flags *f, t_info *info)
+void	ft_precision_bigger(t_flags *f, t_pf *info)
 {
 	if (info->precision >= info->strlen)
 	{
@@ -47,7 +47,7 @@ void	ft_precision_bigger(t_flags *f, t_info *info)
 		ft_precision_bigger2(f, info);
 }
 
-void	ft_precision_bigger2(t_flags *f, t_info *info)
+void	ft_precision_bigger2(t_flags *f, t_pf *info)
 {
 	ft_putstr_fd(info->format, 1);
 	if (f->hash)
@@ -59,7 +59,7 @@ void	ft_precision_bigger2(t_flags *f, t_info *info)
 		write(1, " ", 1);
 }	
 
-void	ft_precision_smaller(t_flags *f, t_info *info)
+void	ft_precision_smaller(t_flags *f, t_pf *info)
 {
 	if (info->precision >= info->strlen)
 	{

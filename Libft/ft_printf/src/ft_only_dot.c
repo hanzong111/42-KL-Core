@@ -6,18 +6,18 @@
 /*   By: ojing-ha <ojing-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 19:29:40 by ojing-ha          #+#    #+#             */
-/*   Updated: 2022/07/24 16:23:46 by ojing-ha         ###   ########.fr       */
+/*   Updated: 2022/09/08 17:18:11 by ojing-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_bigger(t_flags *f, t_info *info, char *type);
-void	ft_bigger2(t_flags *f, t_info *info, char *type);
-void	ft_smaller(t_flags *f, t_info *info, char *type);
-void	ft_print_prefix(t_flags *f, t_info *info, char *type);
+void	ft_bigger(t_flags *f, t_pf *info, char *type);
+void	ft_bigger2(t_flags *f, t_pf *info, char *type);
+void	ft_smaller(t_flags *f, t_pf *info, char *type);
+void	ft_print_prefix(t_flags *f, t_pf *info, char *type);
 
-void	ft_only_dot(t_flags *f, t_info *info, char *type)
+void	ft_only_dot(t_flags *f, t_pf *info, char *type)
 {
 	if (!info->precision)
 	{
@@ -43,7 +43,7 @@ void	ft_only_dot(t_flags *f, t_info *info, char *type)
 		ft_smaller(f, info, type);
 }
 
-void	ft_bigger(t_flags *f, t_info *info, char *type)
+void	ft_bigger(t_flags *f, t_pf *info, char *type)
 {
 	if (info->precision >= info->strlen)
 	{
@@ -66,7 +66,7 @@ void	ft_bigger(t_flags *f, t_info *info, char *type)
 		ft_bigger2(f, info, type);
 }
 
-void	ft_bigger2(t_flags *f, t_info *info, char *type)
+void	ft_bigger2(t_flags *f, t_pf *info, char *type)
 {
 	if (f->hash)
 		info->strlen = info->strlen + 2;
@@ -80,7 +80,7 @@ void	ft_bigger2(t_flags *f, t_info *info, char *type)
 		info->wc = info->width;
 }
 
-void	ft_smaller(t_flags *f, t_info *info, char *type)
+void	ft_smaller(t_flags *f, t_pf *info, char *type)
 {
 	if (info->precision >= info->strlen)
 	{
@@ -97,7 +97,7 @@ void	ft_smaller(t_flags *f, t_info *info, char *type)
 	}
 }
 
-void	ft_print_prefix(t_flags *f, t_info *info, char *type)
+void	ft_print_prefix(t_flags *f, t_pf *info, char *type)
 {
 	if (f->hash || f->plus || f->space)
 	{

@@ -6,7 +6,7 @@
 /*   By: ojing-ha <ojing-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 15:35:35 by ojing-ha          #+#    #+#             */
-/*   Updated: 2022/07/24 15:56:20 by ojing-ha         ###   ########.fr       */
+/*   Updated: 2022/09/08 17:18:11 by ojing-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ft_flagscheck(char c, char d, t_flags *flags)
 		return ;
 }
 
-void	ft_initializeflags(t_flags *var, t_info *info)
+void	ft_initializeflags(t_flags *var, t_pf *info)
 {
 	var->minus = 0;
 	var->zero = 0;

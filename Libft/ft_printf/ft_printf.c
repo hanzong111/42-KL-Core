@@ -6,14 +6,14 @@
 /*   By: ojing-ha <ojing-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 11:33:41 by ojing-ha          #+#    #+#             */
-/*   Updated: 2022/07/24 16:39:55 by ojing-ha         ###   ########.fr       */
+/*   Updated: 2022/09/08 17:38:30 by ojing-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_print_format(char *str, t_flags *flags, t_info *info, va_list args);
-void	ft_print(char *str, t_flags *flags, t_info *info, va_list args);
+char	*ft_print_format(char *str, t_flags *flags, t_pf *info, va_list args);
+void	ft_print(char *str, t_flags *flags, t_pf *info, va_list args);
 void	ft_checks(char	*str, t_flags *flags);
 
 /*	Keeps looping through the string until we hit a Null character	*/
@@ -34,7 +34,7 @@ void	ft_checks(char	*str, t_flags *flags);
 /*	After ft_checks(), now flags.minus and flags.zero are equal to 1.	*/
 /*	Also , flags.percent is also 1.										*/
 
-void	ft_print(char *str, t_flags *flags, t_info *info, va_list args)
+void	ft_print(char *str, t_flags *flags, t_pf *info, va_list args)
 {
 	if (*str == '%')
 		ft_print_percent(flags, info);
@@ -58,7 +58,7 @@ int	ft_printf(const char *str, ...)
 {
 	va_list	args;
 	t_flags	flags;
-	t_info	info;
+	t_pf	info;
 	int		wc;
 
 	wc = 0;
@@ -80,7 +80,7 @@ int	ft_printf(const char *str, ...)
 	return (wc);
 }
 
-char	*ft_print_format(char *str, t_flags *flags, t_info *info, va_list args)
+char	*ft_print_format(char *str, t_flags *flags, t_pf *info, va_list args)
 {
 	ft_checks(str, flags);
 	ft_precision_width(str, flags, info);

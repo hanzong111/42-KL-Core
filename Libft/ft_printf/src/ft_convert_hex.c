@@ -6,16 +6,16 @@
 /*   By: ojing-ha <ojing-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 18:59:02 by ojing-ha          #+#    #+#             */
-/*   Updated: 2022/07/24 16:34:35 by ojing-ha         ###   ########.fr       */
+/*   Updated: 2022/09/08 17:18:11 by ojing-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_hex_nbr_len(t_info *info, unsigned int i);
-int		ft_nullchecks(t_flags *f, t_info *info, unsigned int i, char *str);
+void	ft_hex_nbr_len(t_pf *info, unsigned int i);
+int		ft_nullchecks(t_flags *f, t_pf *info, unsigned int i, char *str);
 
-void	ft_convert_hex(t_flags *f, t_info *info, unsigned int i)
+void	ft_convert_hex(t_flags *f, t_pf *info, unsigned int i)
 {
 	char	*str;
 	int		index;
@@ -39,7 +39,7 @@ void	ft_convert_hex(t_flags *f, t_info *info, unsigned int i)
 	info->format = str;
 }
 
-int	ft_nullchecks(t_flags *f, t_info *info, unsigned int i, char *str)
+int	ft_nullchecks(t_flags *f, t_pf *info, unsigned int i, char *str)
 {
 	if ((info->precision == 0 && f->dot) && i == 0)
 	{
@@ -59,7 +59,7 @@ int	ft_nullchecks(t_flags *f, t_info *info, unsigned int i, char *str)
 	return (0);
 }
 
-void	ft_hex_nbr_len(t_info *info, unsigned int i)
+void	ft_hex_nbr_len(t_pf *info, unsigned int i)
 {
 	if (i == 0)
 	{

@@ -6,17 +6,17 @@
 /*   By: ojing-ha <ojing-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 16:42:00 by ojing-ha          #+#    #+#             */
-/*   Updated: 2022/07/24 16:28:16 by ojing-ha         ###   ########.fr       */
+/*   Updated: 2022/09/08 17:18:11 by ojing-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_prefix(t_flags *f, t_info *info, int i);
-void	ft_convert_nbr(t_flags *f, t_info *info, int i);
-void	ft_no_flags(t_flags *f, t_info *info, int i);
+void	ft_prefix(t_flags *f, t_pf *info, int i);
+void	ft_convert_nbr(t_flags *f, t_pf *info, int i);
+void	ft_no_flags(t_flags *f, t_pf *info, int i);
 
-void	ft_print_nbr(t_flags *f, t_info *info, int i)
+void	ft_print_nbr(t_flags *f, t_pf *info, int i)
 {
 	ft_convert_nbr(f, info, i);
 	info->strlen += ft_strlen((const char *)info->format);
@@ -41,7 +41,7 @@ void	ft_print_nbr(t_flags *f, t_info *info, int i)
 	free(info->prefix);
 }
 
-void	ft_convert_nbr(t_flags *f, t_info *info, int i)
+void	ft_convert_nbr(t_flags *f, t_pf *info, int i)
 {
 	char	*s;
 
@@ -60,7 +60,7 @@ void	ft_convert_nbr(t_flags *f, t_info *info, int i)
 	info->format = s;
 }
 
-void	ft_prefix(t_flags *f, t_info *info, int i)
+void	ft_prefix(t_flags *f, t_pf *info, int i)
 {
 	char	*s;
 
@@ -85,7 +85,7 @@ void	ft_prefix(t_flags *f, t_info *info, int i)
 	return ;
 }
 
-void	ft_no_flags(t_flags *f, t_info *info, int i)
+void	ft_no_flags(t_flags *f, t_pf *info, int i)
 {
 	if (i < 0)
 		ft_putchar_fd('-', 1);

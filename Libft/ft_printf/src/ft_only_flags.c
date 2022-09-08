@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_only_minus.c                                    :+:      :+:    :+:   */
+/*   ft_only_flags.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ojing-ha <ojing-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 15:01:40 by ojing-ha          #+#    #+#             */
-/*   Updated: 2022/07/24 16:03:03 by ojing-ha         ###   ########.fr       */
+/*   Updated: 2022/09/08 17:18:11 by ojing-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_only_zero(t_flags *f, t_info *info, char *c);
-void	ft_only_width(t_flags *f, t_info *info, char *c);
+void	ft_only_zero(t_flags *f, t_pf *info, char *c);
+void	ft_only_width(t_flags *f, t_pf *info, char *c);
 
-void	ft_only_minus(t_flags *f, t_info *info, char *c)
+void	ft_only_minus(t_flags *f, t_pf *info, char *c)
 {
 	if (f->hash || f->plus || f->space)
 		ft_putstr_fd(c, 1);
@@ -32,7 +32,7 @@ void	ft_only_minus(t_flags *f, t_info *info, char *c)
 	}
 }
 
-void	ft_only_width(t_flags *f, t_info *info, char *c)
+void	ft_only_width(t_flags *f, t_pf *info, char *c)
 {
 	info->strlen = ft_strlen((const char *)info->format);
 	if (f->hash)
@@ -58,7 +58,7 @@ void	ft_only_width(t_flags *f, t_info *info, char *c)
 	}
 }
 
-void	ft_only_zero(t_flags *f, t_info *info, char *c)
+void	ft_only_zero(t_flags *f, t_pf *info, char *c)
 {
 	info->strlen = ft_strlen((const char *)info->format);
 	if (f->hash || f->plus || f->space)

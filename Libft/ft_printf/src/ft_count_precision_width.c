@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_precision_width.c                               :+:      :+:    :+:   */
+/*   ft_count_precision_width.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ojing-ha <ojing-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 12:18:36 by ojing-ha          #+#    #+#             */
-/*   Updated: 2022/07/20 17:20:14 by ojing-ha         ###   ########.fr       */
+/*   Updated: 2022/09/08 17:18:11 by ojing-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_precision(t_info *info, char *str);
-void	ft_width(t_info *info, char *str);
-void	ft_no_precision_width(t_info *info, char *str);
+void	ft_precision(t_pf *info, char *str);
+void	ft_width(t_pf *info, char *str);
+void	ft_no_precision_width(t_pf *info, char *str);
 
 /*	ft_precision_width()-> To extract the width and precision value .		*/
 /*	Example	:	%10.30s														*/
 /*				f->width = 10;												*/
 /*				f->precision = 30;											*/
 
-void	ft_precision_width(char *str, t_flags *f, t_info *info)
+void	ft_precision_width(char *str, t_flags *f, t_pf *info)
 {
 	str++;
 	if (f->dot)
@@ -44,7 +44,7 @@ void	ft_precision_width(char *str, t_flags *f, t_info *info)
 		ft_no_precision_width(info, str);
 }
 
-void	ft_width(t_info *info, char *str)
+void	ft_width(t_pf *info, char *str)
 {
 	while (*str == '-' || *str == '#' || *str == '0' || *str == ' ')
 		str++;
@@ -54,7 +54,7 @@ void	ft_width(t_info *info, char *str)
 	info->str = str;
 }
 
-void	ft_precision(t_info *info, char *str)
+void	ft_precision(t_pf *info, char *str)
 {
 	str++;
 	info->precision = ft_atoi(str);
@@ -63,7 +63,7 @@ void	ft_precision(t_info *info, char *str)
 	info->str = str;
 }
 
-void	ft_no_precision_width(t_info *info, char *str)
+void	ft_no_precision_width(t_pf *info, char *str)
 {
 	while (*str == '-' || *str == '#' || *str == '0' || *str == ' ')
 		str++;

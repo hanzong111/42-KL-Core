@@ -6,17 +6,17 @@
 /*   By: ojing-ha <ojing-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:33:12 by ojing-ha          #+#    #+#             */
-/*   Updated: 2022/07/24 15:58:18 by ojing-ha         ###   ########.fr       */
+/*   Updated: 2022/09/08 17:18:11 by ojing-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_convert_unbr(t_flags *f, t_info *info, unsigned int i);
+void	ft_convert_unbr(t_flags *f, t_pf *info, unsigned int i);
 int		ft_udigitcount(unsigned int n);
 char	*ft_uitoa(unsigned int n);
 
-void	ft_print_unbr(t_flags *f, t_info *info, unsigned int i)
+void	ft_print_unbr(t_flags *f, t_pf *info, unsigned int i)
 {
 	ft_convert_unbr(f, info, i);
 	info->strlen += ft_strlen(info->format);
@@ -36,7 +36,7 @@ void	ft_print_unbr(t_flags *f, t_info *info, unsigned int i)
 	free(info->format);
 }
 
-void	ft_convert_unbr(t_flags *f, t_info *info, unsigned int i)
+void	ft_convert_unbr(t_flags *f, t_pf *info, unsigned int i)
 {
 	if ((!info->precision && f->dot) && i == 0)
 	{

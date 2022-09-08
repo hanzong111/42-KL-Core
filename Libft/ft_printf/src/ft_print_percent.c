@@ -6,15 +6,15 @@
 /*   By: ojing-ha <ojing-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 18:52:56 by ojing-ha          #+#    #+#             */
-/*   Updated: 2022/07/17 18:18:47 by ojing-ha         ###   ########.fr       */
+/*   Updated: 2022/09/08 17:18:11 by ojing-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_p_minus_zero(t_info *info);
-void	ft_p_only_zero(t_info *info);
-void	ft_p_only_width(t_info *info);
+void	ft_p_minus_zero(t_pf *info);
+void	ft_p_only_zero(t_pf *info);
+void	ft_p_only_width(t_pf *info);
 
 /*	Seperated the conditions so that we know how to extract the 'Width' */
 /*	from the string														*/
@@ -25,7 +25,7 @@ void	ft_p_only_width(t_info *info);
 /*	Example :	%010%													*/
 /*				%10%													*/
 
-void	ft_print_percent(t_flags *flags, t_info *info)
+void	ft_print_percent(t_flags *flags, t_pf *info)
 {
 	if ((flags->minus && flags->zero) || flags->minus)
 		ft_p_minus_zero(info);
@@ -40,7 +40,7 @@ void	ft_print_percent(t_flags *flags, t_info *info)
 	}	
 }
 
-void	ft_p_minus_zero(t_info *info)
+void	ft_p_minus_zero(t_pf *info)
 {
 	write(1, "%%", 1);
 	if (info->width == 0)
@@ -51,7 +51,7 @@ void	ft_p_minus_zero(t_info *info)
 		write(1, " ", 1);
 }
 
-void	ft_p_only_zero(t_info *info)
+void	ft_p_only_zero(t_pf *info)
 {
 	info->wc = info->width;
 	while (--info->width > 0)
@@ -59,7 +59,7 @@ void	ft_p_only_zero(t_info *info)
 	write(1, "%%", 1);
 }
 
-void	ft_p_only_width(t_info *info)
+void	ft_p_only_width(t_pf *info)
 {
 	info->wc = info->width;
 	while (--info->width > 0)

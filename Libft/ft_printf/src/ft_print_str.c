@@ -6,18 +6,18 @@
 /*   By: ojing-ha <ojing-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 08:15:19 by ojing-ha          #+#    #+#             */
-/*   Updated: 2022/07/24 16:18:52 by ojing-ha         ###   ########.fr       */
+/*   Updated: 2022/09/08 17:18:11 by ojing-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_s_minus_dot(t_info *info, char *args);
-void	ft_s_only_dot(t_flags *f, t_info *info, char *args);
-void	ft_s_only_minus(t_info *info, char *args);
-void	ft_print_null(t_flags *f, t_info *info);
+void	ft_s_minus_dot(t_pf *info, char *args);
+void	ft_s_only_dot(t_flags *f, t_pf *info, char *args);
+void	ft_s_only_minus(t_pf *info, char *args);
+void	ft_print_null(t_flags *f, t_pf *info);
 
-void	ft_print_str(t_flags *f, t_info *info, char *args)
+void	ft_print_str(t_flags *f, t_pf *info, char *args)
 {
 	info->format = args;
 	if (args == NULL)
@@ -40,7 +40,7 @@ void	ft_print_str(t_flags *f, t_info *info, char *args)
 	}
 }
 
-void	ft_s_minus_dot(t_info *info, char *args)
+void	ft_s_minus_dot(t_pf *info, char *args)
 {
 	info->strlen = ft_strlen((const char *)args);
 	if (info->precision >= info->strlen)
@@ -53,7 +53,7 @@ void	ft_s_minus_dot(t_info *info, char *args)
 	}
 }
 
-void	ft_s_only_dot(t_flags *f, t_info *info, char *args)
+void	ft_s_only_dot(t_flags *f, t_pf *info, char *args)
 {
 	info->strlen = ft_strlen((const char *)args);
 	if (info->precision >= info->strlen)
@@ -66,7 +66,7 @@ void	ft_s_only_dot(t_flags *f, t_info *info, char *args)
 	}
 }
 
-void	ft_s_only_minus(t_info *info, char *args)
+void	ft_s_only_minus(t_pf *info, char *args)
 {
 	info->strlen = ft_strlen(args);
 	if (info->strlen >= info->width)
@@ -84,7 +84,7 @@ void	ft_s_only_minus(t_info *info, char *args)
 	}
 }
 
-void	ft_print_null(t_flags *f, t_info *info)
+void	ft_print_null(t_flags *f, t_pf *info)
 {
 	char	*null;
 

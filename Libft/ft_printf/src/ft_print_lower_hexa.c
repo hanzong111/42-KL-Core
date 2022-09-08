@@ -6,13 +6,13 @@
 /*   By: ojing-ha <ojing-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 13:05:17 by ojing-ha          #+#    #+#             */
-/*   Updated: 2022/07/22 16:13:27 by ojing-ha         ###   ########.fr       */
+/*   Updated: 2022/09/08 17:18:11 by ojing-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_print_lower_hexa(t_flags *f, t_info *info, unsigned int args)
+void	ft_print_lower_hexa(t_flags *f, t_pf *info, unsigned int args)
 {
 	ft_convert_hex(f, info, args);
 	info->strlen = info->wc;

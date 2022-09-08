@@ -6,16 +6,16 @@
 /*   By: ojing-ha <ojing-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 14:27:27 by ojing-ha          #+#    #+#             */
-/*   Updated: 2022/07/17 18:47:59 by ojing-ha         ###   ########.fr       */
+/*   Updated: 2022/09/08 17:18:11 by ojing-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_c_minus_width(t_info *info, int c);
-void	ft_c_only_width(t_info *info, int c);
+void	ft_c_minus_width(t_pf *info, int c);
+void	ft_c_only_width(t_pf *info, int c);
 
-void	ft_print_char(t_flags *f, t_info *info, int c)
+void	ft_print_char(t_flags *f, t_pf *info, int c)
 {
 	if (f->minus >= 1)
 		ft_c_minus_width(info, c);
@@ -28,7 +28,7 @@ void	ft_print_char(t_flags *f, t_info *info, int c)
 	}
 }
 
-void	ft_c_minus_width(t_info *info, int c)
+void	ft_c_minus_width(t_pf *info, int c)
 {
 	if (info->width == 0)
 	{
@@ -46,7 +46,7 @@ void	ft_c_minus_width(t_info *info, int c)
 	}
 }
 
-void	ft_c_only_width(t_info *info, int c)
+void	ft_c_only_width(t_pf *info, int c)
 {
 	info->wc = info->width;
 	info->width = info->width - 1;
