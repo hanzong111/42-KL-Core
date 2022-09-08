@@ -33,9 +33,17 @@ SRCS =	ft_atoi.c\
 		ft_putchar_fd.c\
 		ft_putstr_fd.c\
 		ft_putendl_fd.c\
-		ft_putnbr_fd.c\
-		get_next_line_utils.c\
-		get_next_line.c
+		ft_putnbr_fd.c
+
+DEF_COLOR     = \033[0;39m
+GRAY         = \033[0;90m
+RED         = \033[0;91m
+GREEN         = \033[0;92m
+YELLOW         = \033[0;93m
+BLUE         = \033[0;94m
+MAGENTA     = \033[0;95m
+CYAN         = \033[0;96m
+WHITE         = \033[0;97m
 
 INCLUDES = .
 
@@ -68,20 +76,15 @@ FCLEAN = rm -f $(NAME)
 all :	$(NAME)
 
 $(NAME) : ${OBJS}
-		make -C ft_printf
-		cp ft_printf/libftprintf.a .
-		mv libftprintf.a ${NAME}
 		${LIB} $(NAME) ${OBJS}
 	
 %.o: %.c
 		${CC} ${FLAGS} -I ${INCLUDES} $< -o ${<:.c=.o} 
 
 clean : 
-		make clean -C ft_printf
 		${CLEAN}
 
-fclean : clean
-		make fclean -C ft_printf
+fclean : clean 
 		${FCLEAN}
 
 bonus : ${BONUSOBJS}
