@@ -62,35 +62,30 @@ all		: $(NAME)
 bonus	: all
 
 $(NAME)	: ${OBJS}
-		@echo "$(MAGENTA) --------------------------COMPILING OBJECTS-------------------------- $(CYAN)"
+		@mv libft.a $(NAME)
+		@${ARRC} ${NAME} ${OBJS}
 		@echo "\n"
-		make -C libft
-		cp libft/libft.a .
-		mv libft.a $(NAME)
-		${ARRC} ${NAME} ${OBJS}
-		@echo "\n"
-		@echo "$(GREEN) -------------$(RED)I $(CYAN)AM $(GREEN)DONE $(YELLOW)MADAFAKA$(GREEN)-------------------------- $(DEF_COLOR)"
-
+		@echo "$(YELLOW)Done Creating libftprintf.a $(DEF_COLOR)"
 
 %.o		: %.c
-	@echo "$(MAGENTA)"
-		${CC} ${FLAGS} $< -o $@
+		@${CC} ${FLAGS} $< -o $@
+		@echo "$(GREEN)Compiling $<$(DEF_COLOR)"
 
 clean	:
-		@echo "$(MAGENTA) --------------------------CLEANING OBJECTS-------------------------- $(CYAN)"
+		@echo "$(MAGENTA) --------------------------CLEANING FT_PRINTF OBJECTS-------------------------- $(CYAN)"
 		@echo "\n"
-		make clean -C libft
-		${RM} ${OBJS}
+		@${RM} ${OBJS}
+		@echo "$(RED)Object Files Deleted$(DEF_COLOR)"
 		@echo "\n"
 		@echo "$(GREEN) --------------------------DONE--------------------------$(DEF_COLOR)"
 
-fclean	: clean
-		@echo "$(MAGENTA) --------------------------CLEANING LIBFTPRINTF.A-------------------------- $(CYAN)"
+fclean	: 
+		@echo "$(MAGENTA) --------------------------REMOVING LIBFTPRINTF.A-------------------------- $(CYAN)"
 		@echo "\n"
-		make fclean -C libft
-		${RM} ${NAME}
+		@${RM} ${NAME}
+		@echo "$(RED)Libftprintf.a Deleted$(DEF_COLOR)"
 		@echo "\n"
-		@echo "$(GREEN) -------------$(RED)I $(CYAN)AM $(GREEN)DONE $(YELLOW)MADAFAKA$(GREEN)-------------------------- $(DEF_COLOR)"
+		@echo "$(GREEN) --------------------------DONE--------------------------$(DEF_COLOR)"
 
 re		: fclean all
 

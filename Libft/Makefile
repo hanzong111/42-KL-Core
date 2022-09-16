@@ -1,4 +1,13 @@
 
+DEF_COLOR     = \033[0;39m
+GRAY         = \033[0;90m
+RED         = \033[0;91m
+GREEN         = \033[0;92m
+YELLOW         = \033[0;93m
+BLUE         = \033[0;94m
+MAGENTA     = \033[0;95m
+CYAN         = \033[0;96m
+WHITE         = \033[0;97m
 
 SRCS =	ft_atoi.c\
 		ft_bzero.c\
@@ -68,21 +77,43 @@ FCLEAN = rm -f $(NAME)
 all :	$(NAME)
 
 $(NAME) : ${OBJS}
-		make -C ft_printf
-		cp ft_printf/libftprintf.a .
-		mv libftprintf.a ${NAME}
-		${LIB} $(NAME) ${OBJS}
+		@${LIB} $(NAME) ${OBJS}
+		@cp libft.a ft_printf/
+		@echo "$(MAGENTA) --------------------------INSIDE FT_PRINTF-------------------------- $(CYAN)"
+		@echo "\n"
+		@make -C ft_printf
+		@cp ft_printf/libftprintf.a .
+		@mv libftprintf.a ${NAME}
+		@echo "$(MAGENTA) --------------------------BACK TO LIBFT-------------------------- $(CYAN)"
+		@echo "\n"
+		@${LIB} $(NAME) ${OBJS}
+		@echo "$(YELLOW)Done Creating libft.a $(DEF_COLOR)"
+		@echo "\n"
+		@echo "$(GREEN) -------------$(RED)I $(CYAN)AM $(GREEN)DONE $(YELLOW)MADAFAKA$(GREEN)-------------------------- $(DEF_COLOR)"
 	
 %.o: %.c
-		${CC} ${FLAGS} -I ${INCLUDES} $< -o ${<:.c=.o} 
+		@${CC} ${FLAGS} -I ${INCLUDES} $< -o ${<:.c=.o} 
+		@echo "$(GREEN)Compiling $<$(DEF_COLOR)"
 
 clean : 
-		make clean -C ft_printf
-		${CLEAN}
+		@make clean -C ft_printf
+		@echo "$(MAGENTA) --------------------------CLEANING LIBFT OBJECTS-------------------------- $(YELLOW)"
+		@echo "\n"
+		@${CLEAN}
+		@echo "$(RED)Object Files Deleted$(DEF_COLOR)"
+		@echo "\n"
+		@echo "$(GREEN) --------------------------DONE--------------------------$(DEF_COLOR)"
 
 fclean : clean
-		make fclean -C ft_printf
-		${FCLEAN}
+		@make fclean -C ft_printf
+		@echo "$(MAGENTA) --------------------------REMOVING LIBFT.A-------------------------- $(YELLOW)"
+		@echo "\n"
+		@${FCLEAN}
+		@echo "$(RED)Libft.a Deleted$(DEF_COLOR)"
+		@echo "\n"
+		@echo "$(GREEN) --------------------------DONE--------------------------$(DEF_COLOR)"
+		@echo "\n"
+		@echo "$(GREEN) -------------$(RED)I $(CYAN)AM $(GREEN)DONE $(YELLOW)MADAFAKA$(GREEN)-------------------------- $(DEF_COLOR)"
 
 bonus : ${BONUSOBJS}
 		${LIB} $(NAME) ${BONUSOBJS}

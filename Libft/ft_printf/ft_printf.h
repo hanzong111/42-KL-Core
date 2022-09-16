@@ -6,14 +6,14 @@
 /*   By: ojing-ha <ojing-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 13:02:49 by ojing-ha          #+#    #+#             */
-/*   Updated: 2022/09/08 17:23:06 by ojing-ha         ###   ########.fr       */
+/*   Updated: 2022/09/16 13:00:52 by ojing-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include"libft/libft.h"
+# include"../libft.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <stdarg.h>
