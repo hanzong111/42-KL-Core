@@ -82,10 +82,12 @@ $(NAME) : ${OBJS}
 		@echo "$(MAGENTA) --------------------------INSIDE FT_PRINTF-------------------------- $(CYAN)"
 		@echo "\n"
 		@make -C ft_printf
-		@cp ft_printf/libftprintf.a .
-		@mv libftprintf.a ${NAME}
 		@echo "$(MAGENTA) --------------------------BACK TO LIBFT-------------------------- $(CYAN)"
 		@echo "\n"
+		@cp ft_printf/libftprintf.a .
+		@echo "$(GREEN)Copying libftprintf.a...$(DEF_COLOR)"
+		@mv libftprintf.a ${NAME}
+
 		@${LIB} $(NAME) ${OBJS}
 		@echo "$(YELLOW)Done Creating libft.a $(DEF_COLOR)"
 		@echo "\n"
